@@ -1,15 +1,17 @@
 <template>
   <div class="bottom-info">
     <div>
-      <span>Powered by</span>
+      <span>版权所有</span>
       <span>
-        <a href="https://github.com/flipped-aurora/gin-vue-admin">{{ $GIN_VUE_ADMIN.appName }}</a>
+        <!-- <a href="https://github.com/flipped-aurora/gin-vue-admin">{{ $GIN_VUE_ADMIN.appName }}</a> -->
+        {{ $GIN_VUE_ADMIN.appName }}
       </span>
-      <el-divider direction="vertical" />
-      <span>Copyright</span>
+      <!-- <el-divider direction="vertical" />
+      <span>版权所有</span>
       <span>
         <a href="https://github.com/flipped-aurora">flipped-aurora团队</a>
-      </span>
+        Abelit
+      </span> -->
     </div>
   </div>
 </template>

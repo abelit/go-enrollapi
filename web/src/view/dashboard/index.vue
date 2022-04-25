@@ -3,8 +3,8 @@
     <div class="gva-card-box">
       <div class="gva-card gva-top-card">
         <div class="gva-top-card-left">
-          <div class="gva-top-card-left-title">早安，管理员，请开始一天的工作吧</div>
-          <div class="gva-top-card-left-dot">今日晴，0℃ - 10℃，天气寒冷，注意添加衣物。</div>
+          <div class="gva-top-card-left-title">您好，管理员，请开始一天的工作吧</div>
+          <!-- <div class="gva-top-card-left-dot">今日晴，0℃ - 10℃，天气寒冷，注意添加衣物。</div> -->
           <div class="gva-top-card-left-rows">
             <el-row v-auth="888">
               <el-col :span="8" :xs="24" :sm="8">
@@ -12,7 +12,7 @@
                   <el-icon class="dasboard-icon">
                     <sort />
                   </el-icon>
-                  今日流量 (1231231)
+                  今日流量 (0)
                 </div>
               </el-col>
               <el-col :span="8" :xs="24" :sm="8">
@@ -20,7 +20,7 @@
                   <el-icon class="dasboard-icon">
                     <avatar />
                   </el-icon>
-                  总用户数 (24001)
+                  总用户数 (0)
                 </div>
               </el-col>
               <el-col :span="8" :xs="24" :sm="8">
@@ -28,13 +28,13 @@
                   <el-icon class="dasboard-icon">
                     <comment />
                   </el-icon>
-                  好评率 (99%)
+                  好评率 (0%)
                 </div>
               </el-col>
             </el-row>
           </div>
           <div>
-            <div class="gva-top-card-left-item">
+            <!-- <div class="gva-top-card-left-item">
               使用教学：
               <a
                 style="color:#409EFF"
@@ -49,7 +49,7 @@
                 target="view_window"
                 href="https://github.com/flipped-aurora/gva-plugins"
               >https://github.com/flipped-aurora/gva-plugins</a>
-            </div>
+            </div> -->
           </div>
         </div>
         <img src="@/assets/dashboard.png" class="gva-top-card-right" alt>
@@ -90,13 +90,13 @@
           <span>数据统计</span>
         </div>
         <div class="echart-box">
-          <el-row :gutter="20">
-            <el-col :xs="24" :sm="18">
+          <el-row :gutter="24">
+            <el-col :xs="24" :sm="24">
               <echarts-line />
             </el-col>
-            <el-col :xs="24" :sm="6">
+            <!-- <el-col :xs="24" :sm="6">
               <dashboard-table />
-            </el-col>
+            </el-col> -->
           </el-row>
         </div>
       </div>
@@ -133,26 +133,19 @@ const toolCards = ref([
     bg: 'rgba(179, 127, 235,.3)'
   },
   {
-    label: '代码生成器',
-    icon: 'cpu',
-    name: 'autoCode',
+    label: '系统配置',
+    icon: 'operation',
+    name: 'system',
     color: '#ffd666',
     bg: 'rgba(255, 214, 102,.3)'
   },
   {
-    label: '表单生成器',
-    icon: 'document-checked',
-    name: 'formCreate',
+    label: 'API管理',
+    icon: 'platform',
+    name: 'api',
     color: '#ff85c0',
     bg: 'rgba(255, 133, 192,.3)'
   },
-  {
-    label: '关于我们',
-    icon: 'user',
-    name: 'about',
-    color: '#5cdbd3',
-    bg: 'rgba(92, 219, 211,.3)'
-  }
 ])
 
 const router = useRouter()

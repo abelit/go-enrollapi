@@ -2,6 +2,7 @@ package system
 
 import (
 	"context"
+
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	sysModel "github.com/flipped-aurora/gin-vue-admin/server/model/system"
 	"github.com/flipped-aurora/gin-vue-admin/server/service/system"
@@ -45,8 +46,8 @@ func (i *initUser) InitializeData(ctx context.Context) (next context.Context, er
 		return ctx, system.ErrMissingDBContext
 	}
 	entities := []sysModel.SysUser{
-		{UUID: uuid.NewV4(), Username: "admin", Password: "e10adc3949ba59abbe56e057f20f883e", NickName: "超级管理员", HeaderImg: "https://qmplusimg.henrongyi.top/gva_header.jpg", AuthorityId: "888", Phone: "17611111111", Email: "333333333@qq.com"},
-		{UUID: uuid.NewV4(), Username: "a303176530", Password: "3ec063004a6f31642261936a379fde3d", NickName: "QMPlusUser", HeaderImg: "https:///qmplusimg.henrongyi.top/1572075907logo.png", AuthorityId: "9528", Phone: "17611111111", Email: "333333333@qq.com"},
+		{UUID: uuid.NewV4(), Username: "admin", Password: "e10adc3949ba59abbe56e057f20f883e", NickName: "超级管理员", HeaderImg: "uploads/file/a81c448a5a9567d71be5e79690c95961_20220425170811.png", AuthorityId: "888", Phone: "11111111111", Email: "111@qq.com"},
+		{UUID: uuid.NewV4(), Username: "test", Password: "3ec063004a6f31642261936a379fde3d", NickName: "测试用户", HeaderImg: "uploads/file/f4c0fabd511a0a7dc14563b35b9c1c68_20220425171825.png", AuthorityId: "9528", Phone: "11111111110", Email: "110@qq.com"},
 	}
 	if err = global.GVA_DB.Create(&entities).Error; err != nil {
 		return ctx, errors.Wrap(err, sysModel.SysUser{}.TableName()+"表数据初始化失败!")
@@ -71,7 +72,7 @@ func (i *initUser) DataInserted(ctx context.Context) bool {
 		return false
 	}
 	var record sysModel.SysUser
-	if errors.Is(db.Where("username = ?", "a303176530").
+	if errors.Is(db.Where("username = ?", "test").
 		Preload("Authorities").First(&record).Error, gorm.ErrRecordNotFound) { // 判断是否存在数据
 		return false
 	}

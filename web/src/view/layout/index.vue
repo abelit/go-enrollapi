@@ -4,7 +4,7 @@
       <el-row :class="[isShadowBg?'shadowBg':'']" @click="changeShadow()" />
       <el-aside class="main-cont main-left">
         <div class="tilte" :style="{background: backgroundColor}">
-          <img alt class="logoimg" :src="$GIN_VUE_ADMIN.appLogo">
+          <img alt class="logoimg" :src="logoImage">
           <h2 v-if="isSider" class="tit-text" :style="{color:textColor}">{{ $GIN_VUE_ADMIN.appName }}</h2>
         </div>
         <Aside class="aside" />
@@ -100,6 +100,7 @@ export default {
 </script>
 
 <script setup>
+import logoImage from '@/assets/logo.png'
 import Aside from '@/view/layout/aside/index.vue'
 import HistoryComponent from '@/view/layout/aside/historyComponent/history.vue'
 import Search from '@/view/layout/search/search.vue'

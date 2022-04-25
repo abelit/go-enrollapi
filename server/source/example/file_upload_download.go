@@ -2,6 +2,7 @@ package example
 
 import (
 	"context"
+
 	"github.com/flipped-aurora/gin-vue-admin/server/model/example"
 	"github.com/flipped-aurora/gin-vue-admin/server/service/system"
 	"github.com/pkg/errors"
@@ -43,8 +44,8 @@ func (i *initExaFileMysql) InitializeData(ctx context.Context) (context.Context,
 		return ctx, system.ErrMissingDBContext
 	}
 	entities := []example.ExaFileUploadAndDownload{
-		{Name: "10.png", Url: "https://qmplusimg.henrongyi.top/gvalogo.png", Tag: "png", Key: "158787308910.png"},
-		{Name: "logo.png", Url: "https://qmplusimg.henrongyi.top/1576554439myAvatar.png", Tag: "png", Key: "1587973709logo.png"},
+		{Name: "avatarfemale.png", Url: "uploads/file/a81c448a5a9567d71be5e79690c95961_20220425170811.png", Tag: "png", Key: "158787308910.png"},
+		{Name: "avatarmale.png", Url: "uploads/file/f4c0fabd511a0a7dc14563b35b9c1c68_20220425171825.png", Tag: "png", Key: "1587973709logo.png"},
 	}
 	if err := db.Create(&entities).Error; err != nil {
 		return ctx, errors.Wrap(err, example.ExaFileUploadAndDownload{}.TableName()+"表数据初始化失败!")

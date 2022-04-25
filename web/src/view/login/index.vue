@@ -5,7 +5,7 @@
         <div class="login_panle_form_title">
           <img
             class="login_panle_form_title_logo"
-            :src="$GIN_VUE_ADMIN.appLogo"
+            :src="logoImage"
             alt
           >
           <p class="login_panle_form_title_p">{{ $GIN_VUE_ADMIN.appName }}</p>
@@ -83,7 +83,7 @@
       </div>
       <div class="login_panle_right" />
       <div class="login_panle_foot">
-        <div class="links">
+        <!-- <div class="links">
           <a href="http://doc.henrongyi.top/" target="_blank">
             <img src="@/assets/docs.png" class="link-icon">
           </a>
@@ -99,10 +99,10 @@
           <a href="https://space.bilibili.com/322210472" target="_blank">
             <img src="@/assets/video.png" class="link-icon">
           </a>
-        </div>
-        <div class="copyright">
+        </div> -->
+        <!-- <div class="copyright">
           <bootomInfo />
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -115,6 +115,7 @@ export default {
 </script>
 
 <script setup>
+import logoImage from '@/assets/logo.png'
 import { captcha } from '@/api/user'
 import { checkDB } from '@/api/initdb'
 import bootomInfo from '@/view/layout/bottomInfo/bottomInfo.vue'
