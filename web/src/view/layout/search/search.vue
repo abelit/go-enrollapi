@@ -41,7 +41,7 @@
       v-if="btnShow"
       class="user-box"
     >
-     <div class="gvaIcon gvaIcon-customer-service"  @click="toService"></div>
+     <!-- <div class="gvaIcon gvaIcon-customer-service"  @click="toService"></div> -->
     </div>
   </div>
 </template>

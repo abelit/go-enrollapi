@@ -42,6 +42,29 @@ func (b *BaseApi) Login(c *gin.Context) {
 	}
 }
 
+// @Tags Base
+// @Summary 用户登录
+// @Produce  application/json
+// @Param data body systemReq.LoginNoCaptcha true "用户名, 密码"
+// @Success 200 {object} response.Response{data=systemRes.LoginResponse,msg=string} "返回包括用户信息,token,过期时间"
+// @Router /base/login [post]
+func (b *BaseApi) LoginNoCaptcha(c *gin.Context) {
+	var l systemReq.LoginNoCaptcha
+	_ = c.ShouldBindJSON(&l)
+	if err := utils.Verify(l, utils.LoginVerify); err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+
+	u := &system.SysUser{Username: l.Username, Password: l.Password}
+	if err, user := userService.Login(u); err != nil {
+		global.GVA_LOG.Error("登陆失败! 用户名不存在或者密码错误!", zap.Error(err))
+		response.FailWithMessage("用户名不存在或者密码错误", c)
+	} else {
+		b.tokenNext(c, *user)
+	}
+}
+
 // 登录以后签发jwt
 func (b *BaseApi) tokenNext(c *gin.Context, user system.SysUser) {
 	j := &utils.JWT{SigningKey: []byte(global.GVA_CONFIG.JWT.SigningKey)} // 唯一签名
