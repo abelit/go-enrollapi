@@ -11,7 +11,7 @@ services:
       MYSQL_USER: enrolluser
       MYSQL_PASSWORD: enrollpass
     ports:
-      - "3306:3306"
+      - "33306:3306"
     volumes:
       - enroll_data:/var/lib/mysql
 

@@ -37,7 +37,7 @@ func RunWindowsServer() {
 
 	fmt.Printf(`
 	API DOC:http://127.0.0.1%s/swagger/index.html
-	Default URL:http://127.0.0.1:8080
+	Default URL:http://127.0.0.1:38080
 `, address)
 	global.GVA_LOG.Error(s.ListenAndServe().Error())
 }
