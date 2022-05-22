@@ -6,7 +6,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: enrollpass
       MYSQL_DATABASE: enrolldb
       MYSQL_USER: enrolluser
       MYSQL_PASSWORD: enrollpass
