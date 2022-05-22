@@ -6,10 +6,15 @@ import model "github.com/flipped-aurora/gin-vue-admin/server/model/system"
 type Register struct {
 	Username     string   `json:"userName"`
 	Password     string   `json:"passWord"`
+	Phone        string   `json:"phone"`
+	Email        string   `json:"email"`
 	NickName     string   `json:"nickName" gorm:"default:'QMPlusUser'"`
-	HeaderImg    string   `json:"headerImg" gorm:"default:'https://qmplusimg.henrongyi.top/gva_header.jpg'"`
-	AuthorityId  string   `json:"authorityId" gorm:"default:888"`
+	HeaderImg    string   `json:"headerImg" gorm:"default:'uploads/file/a81c448a5a9567d71be5e79690c95961_20220425170811.png'"`
+	AuthorityId  string   `json:"authorityId" gorm:"default:999"`
 	AuthorityIds []string `json:"authorityIds"`
+	RefName      string   `json:"refName"`
+	RefPhone     string    `json:"refPhone"`
+	Region       int       `json:"region"`
 }
 
 // User login structure

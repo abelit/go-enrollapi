@@ -1,6 +1,7 @@
 package system
 
 import (
+	"fmt"
 	"strconv"
 
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
@@ -81,6 +82,7 @@ func (b *BaseApi) tokenNext(c *gin.Context, user system.SysUser) {
 		response.FailWithMessage("获取token失败", c)
 		return
 	}
+
 	if !global.GVA_CONFIG.System.UseMultipoint {
 		response.OkWithDetailed(systemRes.LoginResponse{
 			User:      user,
@@ -96,6 +98,7 @@ func (b *BaseApi) tokenNext(c *gin.Context, user system.SysUser) {
 			response.FailWithMessage("设置登录状态失败", c)
 			return
 		}
+
 		response.OkWithDetailed(systemRes.LoginResponse{
 			User:      user,
 			Token:     token,
@@ -142,7 +145,12 @@ func (b *BaseApi) Register(c *gin.Context) {
 			AuthorityId: v,
 		})
 	}
-	user := &system.SysUser{Username: r.Username, NickName: r.NickName, Password: r.Password, HeaderImg: r.HeaderImg, AuthorityId: r.AuthorityId, Authorities: authorities}
+	refPhone, isTrue := c.GetQuery("refPhone")
+	if isTrue {
+		r.RefPhone = refPhone
+	}
+
+	user := &system.SysUser{Username: r.Username, Phone: r.Phone, RefPhone: r.RefPhone, RefName: r.RefName, Region: r.Region, Email: r.Email, NickName: r.NickName, Password: r.Password, HeaderImg: r.HeaderImg, AuthorityId: r.AuthorityId, Authorities: authorities}
 	err, userReturn := userService.Register(*user)
 	if err != nil {
 		global.GVA_LOG.Error("注册失败!", zap.Error(err))
@@ -322,6 +330,7 @@ func (b *BaseApi) SetUserInfo(c *gin.Context) {
 		global.GVA_LOG.Error("设置失败!", zap.Error(err))
 		response.FailWithMessage("设置失败", c)
 	} else {
+		fmt.Println(user)
 		response.OkWithMessage("设置成功", c)
 	}
 }

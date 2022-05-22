@@ -2,7 +2,7 @@ package system
 
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/satori/go.uuid"
+	uuid "github.com/satori/go.uuid"
 )
 
 type SysUser struct {
@@ -18,8 +18,13 @@ type SysUser struct {
 	AuthorityId string         `json:"authorityId" gorm:"default:888;comment:用户角色ID"`                                        // 用户角色ID
 	Authority   SysAuthority   `json:"authority" gorm:"foreignKey:AuthorityId;references:AuthorityId;comment:用户角色"`
 	Authorities []SysAuthority `json:"authorities" gorm:"many2many:sys_user_authority;"`
-	Phone       string         `json:"phone"  gorm:"comment:用户手机号"` // 用户手机号
-	Email       string         `json:"email"  gorm:"comment:用户邮箱"`  // 用户邮箱
+	Phone       string         `json:"phone"  gorm:"comment:用户手机号"`     // 用户手机号
+	RefPhone    string         `json:"refPhone"  gorm:"comment:推荐人手机号"` // 推荐人手机号
+	RefName     string         `json:"refName"  gorm:"comment:推荐人姓名"`   // 推荐人姓名
+	Region      int            `json:"region" gorm:"comment:地区"`
+	Email       string         `json:"email"  gorm:"comment:用户邮箱"` // 用户邮箱
+	Status      int            `json:"status" gorm:"comment:状态"`
+	Remark      string         `json:"remark"  gorm:"comment:备注"`
 }
 
 func (SysUser) TableName() string {

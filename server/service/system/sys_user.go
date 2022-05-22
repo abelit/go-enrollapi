@@ -22,8 +22,8 @@ type UserService struct{}
 
 func (userService *UserService) Register(u system.SysUser) (err error, userInter system.SysUser) {
 	var user system.SysUser
-	if !errors.Is(global.GVA_DB.Where("username = ?", u.Username).First(&user).Error, gorm.ErrRecordNotFound) { // 判断用户名是否注册
-		return errors.New("用户名已注册"), userInter
+	if !errors.Is(global.GVA_DB.Where("username = ? or phone = ?", u.Username, u.Phone).First(&user).Error, gorm.ErrRecordNotFound) { // 判断用户名是否注册
+		return errors.New("用户名或手机号已经被注册"), userInter
 	}
 	// 否则 附加uuid 密码md5简单加密 注册
 	u.Password = utils.MD5V([]byte(u.Password))
